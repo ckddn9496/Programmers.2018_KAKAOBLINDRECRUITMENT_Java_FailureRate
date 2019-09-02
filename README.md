@@ -1,2 +1,12 @@
 # Programmers.2018_KAKAOBLINDRECRUITMENT_Java_FailureRate
-Programmers.2018_KAKAOBLINDRECRUITMENT_FailureRate
+
+## 1. 문제설명
+input으로 Stage의 갯수 N, player들이 머물고있는 stage가 담긴 int[] stages가 들어온다. 스테이지 당 실패율을 구하고 실패율 기준 내림차순으로 스테이지를 정렬해서 return하는 문제. 실패율이 같은 경우 stage 번호에 오른차순으로 정렬한다.
+
+## 2. 풀이
+stages를 오름차순으로 정렬 하고 stage번호를 1부터 N까지 stages의 첫 index부터 끝까지 해당 stage에 머물고 있는 player의 수를 구하고 해당스테이지에 도전했었던 전체 플레이어수만큼 나누어 실패율을 계산한다. 실패율에 따른 정렬은 Comparable과 Collections.sort를 통해 구현하였다.
+
+> 구현은 Stage class를 따로 마련하여 구현하였지만, HashMap<Integer(StageId), Float(Failure)>을 사용해서 해결하는 방법도 있다. 
+
+## 3. 어려웠던 점
+loop문 시작시 전체 플레어의 수를 가지고 해당 스테이지 실패한 플레이어의수와함께 실패율을 구한다. 그 다음 스테이지에서는 이전 스테이지에서 실패한 플레이어는 다음단계에 도전하지 못했기 때문에 실패율 계산시 분모의 플레이어의 수에서 제외 시켜야 한다. 이런 식으로 반복해 갈 경우 어떤 스테이지부터 이전 스테이지를 성공하지 못하여 아무도 도전하지 못한 스테이지가 나올 수 있다. 이경우 실패한 사용자의 수는 0명이되며, 성공한 사용자의 수도 0이된다. 이때 실패율은 0/0으로 divideByZero로인해 제출시 실패가 났었는데 테스트 케이스 이외의 경우도 생각해보아야겠다.
