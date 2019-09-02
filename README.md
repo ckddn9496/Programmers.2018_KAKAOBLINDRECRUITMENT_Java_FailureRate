@@ -1,0 +1,2 @@
+# Programmers.2018_KAKAOBLINDRECRUITMENT_Java_FailureRate
+Programmers.2018_KAKAOBLINDRECRUITMENT_FailureRate
